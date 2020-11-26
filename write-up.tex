@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+
+\usepackage[top=2.54cm, bottom=2.54cm, left=2.54cm, right=2.54cm]{geometry}
+\usepackage{amssymb}
+\usepackage{comment}
+\usepackage{amsmath}
+\usepackage{stackengine}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\graphicspath{ {.} }
+
+\pagestyle{plain}
+
+\begin{document}
+	\begin{center}
+		CS4563 - Introduction to Machine Learning
+	\end{center}
+
+	\begin{center}
+		Final Project Report
+	\end{center}
+	
+	\begin{center} Written by Qilei Cai and Tasnim Nehal
+	\end{center}
+	
+	\bigskip
+	
+	
+	\textbf{Introduction}\\
+	
+	The dataset, obtained from kaggle.com, contains 48895 Airbnb listings located in New York City. The dataset can be found in the file $AB_NYC_2019.csv$. The features provided for each listing include the neighborhood group (Manhattan, Brooklyn, etc.), latitude, longitude, price and more. Other features of statistical significance include the minimum number of nights, the total number of reviews received by the host, the average number of reviews received per month, the host's total number of listings, and the number of days in a year for which the accommodation is available.\\
+	
+	Many of the features provided are relevant to the pricing of an accommodation, such as the room type and the neighborhood. The goal of the project is to experiment with multiple machine learning models and train them predict the price range of a particular accommodation, given a list of features.
+	
+	\bigskip
+	
+	\textbf{Unsupervised Analysis}\\
+	
+	Unsupervised analysis was performed on the dataset by creating a k-means model with five clusters. The model was created using sklearn. The program for unsupervised analysis can be found in the file $unsupervised\_analysis.py$.\\
+	
+	Some of the features in the dataset were deemed irrelevant to the task and excluded from the training of the model. The following features were preserved: latitude, longtiude, price, minimum number of nights, total number of reviews, number of reviews per month, number of listings belonging to the host, availability in a calendar year, room type, and neighborhood group. Since room type and neighborhood group were written as strings in the dataset, the program converts each type into a number. For example, the room type ``Entire home/apt'' was converted to the number 1, and Brooklyn was converted to the number 2. The model was fit with these features of the dataset. Clustering predictions were made using a method of sklearn.\\
+	
+	The clustering predictions were graphed using matplotlib. Shown below is a graph of longtitude versus latitude.
+	
+	\bigskip
+	
+	\textbf{Supervised Analysis}
+	
+	\bigskip
+	
+	\textbf{Table of Results}
+	
+	\bigskip
+	
+	\textbf{Conclusion}
+\end{document}
