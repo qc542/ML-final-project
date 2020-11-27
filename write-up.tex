@@ -30,9 +30,9 @@
 	
 	\textbf{Introduction}\\
 	
-	The dataset, obtained from kaggle.com, contains 48895 Airbnb listings located in New York City. The dataset can be found in the file $AB_NYC_2019.csv$. The features provided for each listing include the neighborhood group (Manhattan, Brooklyn, etc.), latitude, longitude, price and more. Other features of statistical significance include the minimum number of nights, the total number of reviews received by the host, the average number of reviews received per month, the host's total number of listings, and the number of days in a year for which the accommodation is available.\\
+	The dataset, obtained from kaggle.com, contains 48895 Airbnb listings located in New York City. The dataset can be found in the file $AB\_NYC\_2019.csv$. The features provided for each listing include the neighborhood group (Manhattan, Brooklyn, etc.), latitude, longitude, price and more. Other features of statistical significance include the minimum number of nights, the total number of reviews received by the host, the average number of reviews received per month, the host's total number of listings, and the number of days in a year for which the accommodation is available.\\
 	
-	Many of the features provided are relevant to the pricing of an accommodation, such as the room type and the neighborhood. The goal of the project is to experiment with multiple machine learning models and train them predict the price range of a particular accommodation, given a list of features.
+	Many of the features provided are relevant to the pricing of an accommodation, such as the room type and the neighborhood. The goal of the project is to experiment with multiple machine learning models and train them to predict the price range of a particular accommodation, given a list of features.
 	
 	\bigskip
 	
@@ -42,7 +42,27 @@
 	
 	Some of the features in the dataset were deemed irrelevant to the task and excluded from the training of the model. The following features were preserved: latitude, longtiude, price, minimum number of nights, total number of reviews, number of reviews per month, number of listings belonging to the host, availability in a calendar year, room type, and neighborhood group. Since room type and neighborhood group were written as strings in the dataset, the program converts each type into a number. For example, the room type ``Entire home/apt'' was converted to the number 1, and Brooklyn was converted to the number 2. The model was fit with these features of the dataset. Clustering predictions were made using a method of sklearn.\\
 	
-	The clustering predictions were graphed using matplotlib. Shown below is a graph of longtitude versus latitude.
+	The clustering predictions were graphed using matplotlib. Shown below is a graph of longitude versus latitude.\\
+	
+	\hfill \break
+	
+	\begin{figure}[H]
+		\includegraphics[width=\linewidth]{longtitude_latitude_original.png}
+		\caption{Longitude vs. Latitude (Original)}
+	\end{figure}
+
+	The x-axis is longitude, and the y-axis is latitude. This way, the data points are rendered as they would show on a map. Comparing the distribution of the points to a map of NYC, the five boroughs are identified in the figure below. You can also tell that the blank space in densely-dotted Manhattan is Central Park.\\
+	
+	\begin{figure}[H]
+		\includegraphics[width=\linewidth]{longtitude_latitude_annotated.jpg}
+		\caption{Longitude vs. Latitude (Annotated)}
+	\end{figure}
+	
+	These graphs give a good idea of where the listings are most densely located. The entire Manhattan is covered by data points, except for Central Park; Brooklyn and Queens lag behind, but the points are dense as well. The Bronx, Staten Island and Long Island are on the bottom rung	here.\\
+	
+	The data points are rendered in five colors, one for each of the five clusters that the k-means model identified. At first glance, there is no clear correlation between geography and the clustering. The purple dots and blue dots are the most common and are strewn all over the place. Despite that, it is worth noting that most of the green dots are located in Manhattan. Specifically, many of them circle Central Park, and the rest are mostly in Midtown and Downtown. At this point, not enough analysis has been done to offer an explanation. More clues should come to light as the other features are analyzed.
+	
+	
 	
 	\bigskip
 	
