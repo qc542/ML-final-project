@@ -32,7 +32,6 @@ model = KMeans(n_clusters=5)
 model.fit(dataset)
 
 all_predictions = model.predict(dataset)
-print(all_predictions.shape)
 label = {0: 'blue', 1: 'green', 2: 'pink', 3:'red', 4:'gray'}
 x_axis = dataset['longitude']
 y_axis = dataset['latitude']
@@ -49,7 +48,7 @@ y_axis = dataset['price']
 x_axis = dataset['reviews_per_month']
 fig, ax = plt.subplots()
 scatter = ax.scatter(x_axis, y_axis, c=all_predictions)
-legend = plt.legend(*scatter.legend_elements(), loc="lower left", \
+legend = plt.legend(*scatter.legend_elements(), loc="upper right", \
         title="Clusters")
 ax.add_artist(legend)
 plt.xlabel('Reviews per Month')
@@ -82,7 +81,7 @@ y_axis = dataset['price']
 x_axis = dataset['room_type']
 fig, ax = plt.subplots()
 scatter = ax.scatter(x_axis, y_axis, c=all_predictions)
-legend = plt.legend(*scatter.legend_elements(), loc="lower left", \
+legend = plt.legend(*scatter.legend_elements(), loc="upper right", \
         title="Clusters")
 ax.add_artist(legend)
 plt.xlabel('Room Type')
