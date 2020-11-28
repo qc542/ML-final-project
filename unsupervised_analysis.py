@@ -24,6 +24,7 @@ for i in dataset.index:
     if dataset['neighbourhood_group'][i] == "Queens":
         dataset.at[i, 'neighbourhood_group'] = 5
 
+# Excluding irrelevant features from the dataset
 dataset = dataset[['latitude', 'longitude', 'price', 'minimum_nights',\
         'number_of_reviews', 'reviews_per_month', \
         'calculated_host_listings_count', 'availability_365', \
