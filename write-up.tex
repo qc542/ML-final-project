@@ -53,16 +53,66 @@
 
 	The x-axis is longitude, and the y-axis is latitude. This way, the data points are rendered as they would show on a map. Comparing the distribution of the points to a map of NYC, the five boroughs are identified in the figure below. You can also tell that the blank space in densely-dotted Manhattan is Central Park.\\
 	
-	\begin{figure}[H]
+	\textsc{\begin{figure}[H]
 		\includegraphics[width=\linewidth]{longtitude_latitude_annotated.jpg}
 		\caption{Longitude vs. Latitude (Annotated)}
-	\end{figure}
+	\end{figure}}
 	
 	These graphs give a good idea of where the listings are most densely located. The entire Manhattan is covered by data points, except for Central Park; Brooklyn and Queens lag behind, but the points are dense as well. The Bronx, Staten Island and Long Island are on the bottom rung	here.\\
 	
-	The data points are rendered in five colors, one for each of the five clusters that the k-means model identified. At first glance, there is no clear correlation between geography and the clustering. The purple dots and blue dots are the most common and are strewn all over the place. Despite that, it is worth noting that most of the green dots are located in Manhattan. Specifically, many of them circle Central Park, and the rest are mostly in Midtown and Downtown. At this point, not enough analysis has been done to offer an explanation. More clues should come to light as the other features are analyzed.
+	The data points are rendered in five colors, one for each of the five clusters that the k-means model identified. At first glance, there is no clear correlation between geography and the clustering. The purple dots and blue dots are the most common and are strewn all over the place. Despite that, it is worth noting that most of the green dots are located in Manhattan. Specifically, many of them circle Central Park, and the rest are mostly in Midtown and Downtown. At this point, not enough analysis has been done to offer an explanation. More clues should come to light as the other features are analyzed.\\
 	
+	Next, a graph of the minimum number of nights (the minimum required for a booking) versus the total number of reviews is made. The x-axis is the number of nights, and the y-axis is the number of reviews.\\
 	
+	\textsc{\begin{figure}[H]
+			\includegraphics[width=\linewidth]{nights_reviews.png}
+			\caption{Minimum Number of Nights vs. Number of Reviews}
+	\end{figure}}
+	
+	The general trend is that the lower the number of nights, the higher the number of reviews. This relationship is intuitive---more people stay at accommodations where they can book fewer nights, so these places receive more reviews. However, there is no clear correlation between the two variables and the clustering. Purple dots and blue dots are present across the entire spectra of reviews and nights, whereas the dots of the other colors can barely be seen. Therefore, neither of the two variables had a heavy weight in how the model made the clustering predictions.\\
+	
+	Shown below is a graph of the minimum number of rights versus room type. There are three room types in the dataset: entire home/apartment, private room and shared room. During pre-processing, the three labels were converted to 1, 2 and 3 respectively. The x-axis is the minimum number of nights, and the y-axis is the room type, which is labeled either 1, 2 or 3.\\
+	
+	\textsc{\begin{figure}[H]
+			\includegraphics[width=\linewidth]{nights_room_type.png}
+			\caption{Minimum Number of Nights vs. Room Type}
+	\end{figure}}
+
+	The graph shows that shared rooms (labeled 3) require the least number of nights for a booking, whereas the distribution for the other two room types are similar. Since shared rooms are targeted toward short-term travelers, it is expected that they require fewer nights per booking. A clear pattern of clustering is still missing---the purple dots and blue dots are present across the spectrum of nights and in the three room types, whereas the dots of the other colors can barely be seen. This indicates that neither of the two variables had a heavy weight in how the model made the predictions.\\
+	
+	After a few unsuccessful attempts at looking for a pattern of clustering, the attention was turned toward pricing. A graph of the number of reviews per month versus price was made. The x-axis is the number of reviews, and the y-axis is the price in dollars.\\
+	
+	\textsc{\begin{figure}[H]
+			\includegraphics[width=\linewidth]{reviews_price.png}
+			\caption{Number of Reviews per Month vs. Price (\$)}
+	\end{figure}}
+
+	This attempt finally yielded a clue as to how the clusters were made. The graph clearly shows that dots of a particular color are all clustered within a certain price range. The cyan dots, which refer to Cluster 2, are at the top of the pile in terms of pricing, followed by yellow dots, which refer to Cluster 4. The green dots, which refer to Cluster 3, are ranked in the middle. The purple and blue dots, which refer to Cluster 0 and 1 respectively, overlap each other in the lowest price range. On the other hand, the the graph does not illustrate any correlation between reviews and the clustering, since there are dots of multiple types in the range of 0-10 reviews per month. This pattern indicates that price had a heavy weight in how the model made the clustering predictions.\\
+	
+	Another graph was made to analyze the relationship between pricing and room type (labeled 1, 2 or 3 like above). The graph again shows a clear pattern of clustering based on price range. On the other hand, there is no clear correlation between room type and the clustering, since dots of multiple types are present for each room type.\\
+	
+	\textsc{\begin{figure}[H]
+			\includegraphics[width=\linewidth]{room_type_price.png}
+			\caption{Room Type vs. Price (\$)}
+	\end{figure}}
+
+	More analysis was done on the relationship between pricing and the other features. Shown below is a graph of neighborhood group versus price. There are five neighborhood groups in the dataset: Manhattan, Brooklyn, the Bronx, Staten Island and Queens. The five labels were converted to 1, 2, 3, 4 and 5 respectively during pre-processing. The graph illustrates the same pattern as the previous two graphs. In addition, the graph illustrates that the more expensive listings are mostly located in Manhattan and Brooklyn, whereas the other neighborhoods have fewer.\\
+	
+	This graph also offers a clue to the question raised on Figure 1, which shows the geographical distribution of the data points. It was noted that most of the green dots were located in Manhattan. Specifically, the green dots circle Central Park, and the rest of them were located in Midtown and Downtown Manhattan. Figure 7 shows that the green dots of Manhattan are roughly in the \$500-\$1700 price range. Real estate is more expensive in Midtown and Downtown than the other parts of Manhattan, which explains the relatively high price range of the listings that were grouped in the green cluster (Cluster 3).\\
+			
+	\textsc{\begin{figure}[H]
+			\includegraphics[width=\linewidth]{neighborhood_price.png}
+			\caption{Neighborhood Group vs. Price (\$)}
+	\end{figure}}
+
+	Another graph was made to analyze the relationship between price and the minimum number of nights (shown below). The graph illustrates the same clustering pattern as the other graphs of pricing. It also shows that the more expensive listings require fewer nights per booking. This is expected---the more expensive listings offer higher profit margins, so the owners do not have to require too many nights per booking to turn a profit.\\
+	
+	\textsc{\begin{figure}[H]
+			\includegraphics[width=\linewidth]{nights_price.png}
+			\caption{Minimum Number of Nights vs. Price (\$)}
+	\end{figure}}
+
+	From the graphs of various relationships between the features, it can be concluded that pricing was a significant factor in how the model made the clustering predictions. The general trends found in the graphs also match the expectations from reality, such as the locations of the more expensive listings.
 	
 	\bigskip
 	
