@@ -90,10 +90,11 @@ def logistic_regression_l1(param, features_train, target_train, \
     weights.append(model.coef_)
 
 param_values = [0.0001, 0.001, 0.01, 0.1, 1, 10, 100]
+"""
 for p in param_values:
     logistic_regression_l1(p, features_train, target_train, features_test, \
             target_test, weights)
-
+"""
 plt.scatter(param_lst, training_accuracy_lst)
 plt.plot(param_lst, training_accuracy_lst)
 plt.xlabel('c')
@@ -101,7 +102,8 @@ plt.ylabel('Logistic Regression Accuracy on Training/Test Data')
 plt.scatter(param_lst, test_accuracy_lst)
 plt.plot(param_lst, test_accuracy_lst)
 plt.legend(['Training Accuracy', 'Test Accuracy'], loc='lower right')
-plt.savefig('logistic_1', format='png')
+plt.savefig('logistic_1.png', format='png')
+plt.clf()
 
 """ The feature weights returned by sklearn are 8 by 9. This function calculates the L2 norm of each of the 8 vectors and returns their average."""
 def l2_norm_weights(weights):
@@ -119,7 +121,8 @@ plt.scatter(param_lst, l2_norm_lst)
 plt.plot(param_lst, l2_norm_lst)
 plt.xlabel('c')
 plt.ylabel('Average L2 Norm of Feature Weights')
-plt.savefig('logistic_2', format='png')
+plt.savefig('logistic_2.png', format='png')
+plt.clf()
 
 # The beginning of Logistic Regression with L2 Regularization
 training_accuracy_l2 = []
@@ -146,9 +149,11 @@ def logistic_regression_l2(param, features_train, target_train, \
     param_lst_l2.append(param)
     weights.append(model.coef_)
 
+"""
 for p in param_values:
     logistic_regression_l2(p, features_train, target_train, \
             features_test, target_test, weights_l2)
+"""
 
 plt.scatter(param_lst_l2, training_accuracy_l2)
 plt.plot(param_lst_l2, training_accuracy_l2)
@@ -157,7 +162,8 @@ plt.ylabel('Logistic Regression Accuracy on Training/Test Data')
 plt.scatter(param_lst_l2, test_accuracy_l2)
 plt.plot(param_lst_l2, test_accuracy_l2)
 plt.legend(['Training Accuracy', 'Test Accuracy'], loc='upper right')
-plt.savefig('logistic_3', format='png')
+plt.savefig('logistic_3.png', format='png')
+plt.clf()
 
 l2_norm_lst2 = []
 for weight in weights_l2:
@@ -167,7 +173,8 @@ plt.scatter(param_lst, l2_norm_lst2)
 plt.plot(param_lst, l2_norm_lst2)
 plt.xlabel('c')
 plt.ylabel('Average L2 Norm of Feature Weights')
-plt.savefig('logistic_4', format='png')
+plt.savefig('logistic_4.png', format='png')
+plt.clf()
 
 
 # The beginning of Logistic Regression with Polynomial Feature Transformation
@@ -196,17 +203,19 @@ plt.ylabel('Logistic Regression Accuracy on Training/Test Data')
 plt.scatter(param_lst, test_accuracy_lst)
 plt.plot(param_lst, test_accuracy_lst)
 plt.legend(['Training Accuracy', 'Test Accuracy'], loc='upper right')
-plt.savefig('logistic_5', format='png')
+plt.savefig('logistic_5.png', format='png')
+plt.clf()
 
 l2_norm_lst_t = []
 for weight in weights_l1_t:
     l2_norm_lst_t.append(l2_norm_weights(weight))
 
-plt.scatter(param_lst, l2_norm_lst2)
-plt.plot(param_lst, l2_norm_lst2)
+plt.scatter(param_lst, l2_norm_lst_t)
+plt.plot(param_lst, l2_norm_lst_t)
 plt.xlabel('c')
 plt.ylabel('Average L2 Norm of Feature Weights')
-plt.savefig('logistic_6', format='png')
+plt.savefig('logistic_6.png', format='png')
+plt.clf()
 
 """ Use the transformed features to fit the logistic regression model with L2 Regularization"""
 training_accuracy_l2 = []
@@ -225,12 +234,19 @@ plt.ylabel('Logistic Regression Accuracy on Training/Test Data')
 plt.scatter(param_lst_l2, test_accuracy_l2)
 plt.plot(param_lst_l2, test_accuracy_l2)
 plt.legend(['Training Accuracy', 'Test Accuracy'], loc='upper right')
-plt.savefig('logistic_7', format='png')
+plt.savefig('logistic_7.png', format='png')
+plt.clf()
 
 l2_norm_lst_t2 = []
 for weight in weights_l2_t:
     l2_norm_lst_t2.append(l2_norm_weights(weight))
 
+plt.scatter(param_lst, l2_norm_lst_t2)
+plt.plot(param_lst, l2_norm_lst_t2)
+plt.xlabel('c')
+plt.ylabel('Average L2 Norm of Feature Weights')
+plt.savefig('logistic_8.png', format='png')
+plt.clf()
 
 """ The beginning of Logistic Regression with Feature Transformation by MinMaxScaler"""
 
@@ -261,7 +277,8 @@ plt.ylabel('Logistic Regression Accuracy on Training/Test Data')
 plt.scatter(param_lst, test_accuracy_lst)
 plt.plot(param_lst, test_accuracy_lst)
 plt.legend(['Training Accuracy', 'Test Accuracy'], loc='upper right')
-plt.savefig('logistic_8', format='png')
+plt.savefig('logistic_9.png', format='png')
+plt.clf()
 
 l2_norm_lst_t3 = []
 for weight in weights_l1_t3:
@@ -271,7 +288,8 @@ plt.scatter(param_lst, l2_norm_lst_t3)
 plt.plot(param_lst, l2_norm_lst_t3)
 plt.xlabel('c')
 plt.ylabel('Average L2 Norm of Feature Weights')
-plt.savefig('logistic_9', format='png')
+plt.savefig('logistic_10.png', format='png')
+plt.clf()
 
 """ Use the transformed features to fit the logistic regression model with L2 Regularization"""
 training_accuracy_l2 = []
@@ -290,7 +308,8 @@ plt.ylabel('Logistic Regression Accuracy on Training/Test Data')
 plt.scatter(param_lst_l2, test_accuracy_l2)
 plt.plot(param_lst_l2, test_accuracy_l2)
 plt.legend(['Training Accuracy', 'Test Accuracy'], loc='upper right')
-plt.savefig('logistic_10', format='png')
+plt.savefig('logistic_11.png', format='png')
+plt.clf()
 
 l2_norm_lst_t4 = []
 for weight in weights_l2_t3:
@@ -301,4 +320,5 @@ plt.scatter(param_lst, l2_norm_lst_t4)
 plt.plot(param_lst, l2_norm_lst_t4)
 plt.xlabel('c')
 plt.ylabel('Average L2 Norm of Feature Weights')
-plt.savefig('logistic_11', format='png')
+plt.savefig('logistic_12.png', format='png')
+plt.clf()

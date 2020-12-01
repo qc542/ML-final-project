@@ -139,14 +139,14 @@ def l2_norm_weights(network_structure, weights):
 l2_norm_lst = []
 
 def back_propagation(network_structure, features, target, \
-        iterations=3000, alpha=0.25):
+        iterations=1000, alpha=0.25):
     weights, biases = initialize_weights(network_structure)
     current_iteration = 0
     num_examples = len(target)
     average_cost_lst = []
     print('Beginning gradient descent. Total number of iterations: {}'.format(iterations))
     while current_iteration < iterations:
-        if current_iteration % 1000 == 0:
+        if current_iteration % 100 == 0:
             print('Current iteration: No. {} of {}'.format(\
                     current_iteration, iterations))
         gradient_w, gradient_b = initialize_gradients(network_structure)
@@ -195,16 +195,19 @@ weights, biases, average_cost_lst = back_propagation(network_structure, \
 plt.plot(average_cost_lst)
 plt.ylabel('Average Cost')
 plt.xlabel('Back Propagation Iteration Number')
-plt.savefig('neural_1', format='png')
+plt.savefig('neural_1.png', format='png')
+plt.clf()
 
 plt.plot(l2_norm_lst)
 plt.ylabel('Average L2 Norm of Feature Weights')
 plt.xlabel('Back Propagation Iteration Number')
-plt.savefig('neural_2', format='png')
+plt.savefig('neural_2.png', format='png')
+plt.clf()
 
-target_predictions = predict_target(weights, biases, features_test, 3)
-print('Prediction accuracy is {}%'.format(accuracy_score(target_test, \
-        target_predictions)*100))
+train_target_predictions = predict_target(weights, biases, features_train, 3)
+test_target_predictions = predict_target(weights, biases, features_test, 3)
+print('Prediction accuracy on the training set is {}%'.format(accuracy_score(target_train, train_target_predictions)*100))
+print('Prediction accuracy on the test set is {}%'.format(accuracy_score(target_test, test_target_predictions)*100))
 
 # Begin neural network with L1 regularization
 
@@ -222,16 +225,13 @@ def weights_abs_sum(network_structure, weights):
 l2_norm_lst = []
 
 def back_propagation_l1(network_structure, features, target, lambda_val, \
-        iterations=1000, alpha=0.25):
+        iterations=100, alpha=0.25):
     weights, biases = initialize_weights(network_structure)
     current_iteration = 0
     num_examples = len(target)
     average_cost_lst = []
     print('Beginning gradient descent. Total number of iterations: {}'.format(iterations))
     while current_iteration < iterations:
-        if current_iteration % 100 == 0:
-            print('Current iteration: No. {} of {}'.format(\
-                    current_iteration, iterations))
         gradient_w, gradient_b = initialize_gradients(network_structure)
         average_cost = 0
         for i in range(num_examples):
@@ -271,7 +271,8 @@ lambda_lst = [0.0001, 0.001, 0.01, 0.1, 1, 10, 100]
 weights_lst = []
 final_average_cost_lst = []
 final_l2_norm_lst = []
-accuracy_lst = []
+train_accuracy_lst = []
+test_accuracy_lst = []
 
 polynomial = PolynomialFeatures(2)
 scaler = StandardScaler()
@@ -291,22 +292,30 @@ for lambda_val in lambda_lst:
     weights_lst.append(weights)
     final_average_cost_lst.append(final_average_cost)
     final_l2_norm_lst.append(final_l2_norm)
+    train_data_predictions = predict_target(weights, biases, features_train_t, 3)
+    train_data_accuracy = accuracy_score(target_train, train_data_predictions)*100
+    print('Prediction accuracy on training set is {}%'.format(train_data_accuracy))
     target_predictions = predict_target(weights, biases, features_test_t, 3)
     accuracy = accuracy_score(target_test, target_predictions)*100
-    print('Prediction accuracy is {}%'.format(accuracy))
-    accuracy_lst.append(accuracy)
+    print('Prediction accuracy on test set is {}%'.format(accuracy))
+    test_accuracy_lst.append(accuracy)
+    train_accuracy_lst.append(train_data_accuracy)
 
-plt.scatter(lambda_lst, accuracy_lst)
-plt.plot(lambda_lst, accuracy_lst)
+plt.scatter(lambda_lst, train_accuracy_lst)
+plt.plot(lambda_lst, train_accuracy_lst)
 plt.ylabel('Accuracy (L1 Regularization)')
 plt.xlabel('c')
-plt.savefig('neural_3', format='png')
+plt.scatter(lambda_lst, test_accuracy_lst)
+plt.plot(lambda_lst, test_accuracy_lst)
+plt.savefig('neural_3.png', format='png')
+plt.clf()
 
 plt.scatter(lambda_lst, final_l2_norm_lst)
 plt.plot(lambda_lst, final_l2_norm_lst)
 plt.ylabel('Average L2 Norm of Feature Weights')
 plt.xlabel('c')
-plt.savefig('neural_4', format='png')
+plt.savefig('neural_4.png', format='png')
+plt.clf()
 
 # Begin neural network with L2 Regularization
 # Calculates the term to be multiplied by lambda
@@ -320,16 +329,13 @@ def l2_term(network_structure, weights):
     return np.sum(norms)
 
 def back_propagation_l2(network_structure, features, target, lambda_val, \
-        iterations=1000, alpha=0.25):
+        iterations=100, alpha=0.25):
     weights, biases = initialize_weights(network_structure)
     current_iteration = 0
     num_examples = len(target)
     average_cost_lst = []
     print('Beginning gradient descent. Total number of iterations: {}'.format(iterations))
     while current_iteration < iterations:
-        if current_iteration % 100 == 0:
-            print('Current iteration: No. {} of {}'.format(\
-                    current_iteration, iterations))
         gradient_w, gradient_b = initialize_gradients(network_structure)
         average_cost = 0
         for i in range(num_examples):
@@ -369,7 +375,8 @@ lambda_lst = [0.0001, 0.001, 0.01, 0.1, 1, 10, 100]
 weights_lst = []
 final_average_cost_lst = []
 final_l2_norm_lst = []
-accuracy_lst = []
+train_accuracy_lst = []
+test_accuracy_lst = []
 
 
 for lambda_val in lambda_lst:
@@ -379,22 +386,30 @@ for lambda_val in lambda_lst:
     weights_lst.append(weights)
     final_average_cost_lst.append(final_average_cost)
     final_l2_norm_lst.append(final_l2_norm)
+    train_data_predictions = predict_target(weights, biases, features_train_t, 3)
+    train_data_accuracy = accuracy_score(target_train, train_data_predictions)*100
+    print('Prediction accuracy on training set is {}%'.format(train_data_accuracy))
     target_predictions = predict_target(weights, biases, features_test_t, 3)
     accuracy = accuracy_score(target_test, target_predictions)*100
-    print('Prediction accuracy is {}%'.format(accuracy))
-    accuracy_lst.append(accuracy)
+    print('Prediction accuracy on test set is {}%'.format(accuracy))
+    test_accuracy_lst.append(accuracy)
+    train_accuracy_lst.append(train_data_accuracy)
 
-plt.scatter(lambda_lst, accuracy_lst)
-plt.plot(lambda_lst, accuracy_lst)
+plt.scatter(lambda_lst, train_accuracy_lst)
+plt.plot(lambda_lst, train_accuracy_lst)
 plt.ylabel('Accuracy (L2 Regularization)')
 plt.xlabel('c')
-plt.savefig('neural_5', format='png')
+plt.scatter(lambda_lst, test_accuracy_lst)
+plt.plot(lambda_lst, test_accuracy_lst)
+plt.savefig('neural_5.png', format='png')
+plt.clf()
 
 plt.scatter(lambda_lst, final_l2_norm_lst)
 plt.plot(lambda_lst, final_l2_norm_lst)
 plt.ylabel('Average L2 Norm of Feature Weights')
 plt.xlabel('c')
-plt.savefig('neural_6', format='png')
+plt.savefig('neural_6.png', format='png')
+plt.clf()
 
 
 # Begin neural network with transformation by MinMaxScaler
@@ -402,7 +417,8 @@ lambda_lst = [0.0001, 0.001, 0.01, 0.1, 1, 10, 100]
 weights_lst = []
 final_average_cost_lst = []
 final_l2_norm_lst = []
-accuracy_lst = []
+train_accuracy_lst = []
+test_accuracy_lst = []
 
 mscaler = MinMaxScaler()
 scaler = StandardScaler()
@@ -419,29 +435,38 @@ for lambda_val in lambda_lst:
     weights_lst.append(weights)
     final_average_cost_lst.append(final_average_cost)
     final_l2_norm_lst.append(final_l2_norm)
+    train_data_predictions = predict_target(weights, biases, features_train_t, 3)
+    train_data_accuracy = accuracy_score(target_train, train_data_predictions)*100
+    print('Prediction accuracy on training set is {}%'.format(train_data_accuracy))
     target_predictions = predict_target(weights, biases, features_test_t, 3)
     accuracy = accuracy_score(target_test, target_predictions)*100
-    print('Prediction accuracy is {}%'.format(accuracy))
-    accuracy_lst.append(accuracy)
+    print('Prediction accuracy on test set is {}%'.format(accuracy))
+    test_accuracy_lst.append(accuracy)
+    train_accuracy_lst.append(train_data_accuracy)
 
-plt.scatter(lambda_lst, accuracy_lst)
-plt.plot(lambda_lst, accuracy_lst)
+plt.scatter(lambda_lst, train_accuracy_lst)
+plt.plot(lambda_lst, train_accuracy_lst)
 plt.ylabel('Accuracy (L1 Regularization)')
 plt.xlabel('c')
-plt.savefig('neural_7', format='png')
+plt.scatter(lambda_lst, test_accuracy_lst)
+plt.plot(lambda_lst, test_accuracy_lst)
+plt.savefig('neural_7.png', format='png')
+plt.clf()
 
 plt.scatter(lambda_lst, final_l2_norm_lst)
 plt.plot(lambda_lst, final_l2_norm_lst)
 plt.ylabel('Average L2 Norm of Feature Weights')
 plt.xlabel('c')
-plt.savefig('neural_8', format='png')
+plt.savefig('neural_8.png', format='png')
+plt.clf()
 
 
 lambda_lst = [0.0001, 0.001, 0.01, 0.1, 1, 10, 100]
 weights_lst = []
 final_average_cost_lst = []
 final_l2_norm_lst = []
-accuracy_lst = []
+train_accuracy_lst = []
+test_accuracy_lst = []
 
 
 for lambda_val in lambda_lst:
@@ -451,19 +476,27 @@ for lambda_val in lambda_lst:
     weights_lst.append(weights)
     final_average_cost_lst.append(final_average_cost)
     final_l2_norm_lst.append(final_l2_norm)
+    train_data_predictions = predict_target(weights, biases, features_train_t, 3)
+    train_data_accuracy = accuracy_score(target_train, train_data_predictions)*100
+    print('Prediction accuracy on training set is {}%'.format(train_data_accuracy))
     target_predictions = predict_target(weights, biases, features_test_t, 3)
     accuracy = accuracy_score(target_test, target_predictions)*100
-    print('Prediction accuracy is {}%'.format(accuracy))
-    accuracy_lst.append(accuracy)
+    print('Prediction accuracy on test set is {}%'.format(accuracy))
+    test_accuracy_lst.append(accuracy)
+    train_accuracy_lst.append(train_data_accuracy)
 
-plt.scatter(lambda_lst, accuracy_lst)
-plt.plot(lambda_lst, accuracy_lst)
+plt.scatter(lambda_lst, train_accuracy_lst)
+plt.plot(lambda_lst, train_accuracy_lst)
 plt.ylabel('Accuracy (L2 Regularization)')
 plt.xlabel('c')
-plt.savefig('neural_9', format='png')
+plt.scatter(lambda_lst, test_accuracy_lst)
+plt.plot(lambda_lst, test_accuracy_lst)
+plt.savefig('neural_9.png', format='png')
+plt.clf()
 
 plt.scatter(lambda_lst, final_l2_norm_lst)
 plt.plot(lambda_lst, final_l2_norm_lst)
 plt.ylabel('Average L2 Norm of Feature Weights')
 plt.xlabel('c')
-plt.savefig('neural_10', format='png')
+plt.savefig('neural_10.png', format='png')
+plt.clf()

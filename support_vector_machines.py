@@ -101,7 +101,8 @@ plt.ylabel('SVM (linear) Accuracy on Training/Test Data')
 plt.scatter(param_lst, test_accuracy_lst)
 plt.plot(param_lst, test_accuracy_lst)
 plt.legend(['Training Accuracy', 'Test Accuracy'], loc='upper right')
-plt.show()
+plt.savefig('svm_1', format='png')
+plt.clf()
 
 """ This function calculates the L2 norm of each of the weight vectors and returns their average."""
 def l2_norm_weights(weights):
@@ -119,7 +120,8 @@ plt.scatter(param_lst, l2_norm_lst)
 plt.plot(param_lst, l2_norm_lst)
 plt.xlabel('c')
 plt.ylabel('Average L2 Norm of Feature Weights')
-plt.show()
+plt.savefig('svm_2', format='png')
+plt.clf()
 
 # The beginning of SVM with Radial Basis Function (RBF) kernel
 training_accuracy_lst = []
@@ -155,7 +157,8 @@ plt.ylabel('SVM (RBF) Accuracy on Training/Test Data')
 plt.scatter(param_lst, test_accuracy_lst)
 plt.plot(param_lst, test_accuracy_lst)
 plt.legend(['Training Accuracy', 'Test Accuracy'], loc='upper right')
-plt.show()
+plt.savefig('svm_3', format='png')
+plt.clf()
 
 l2_norm_lst = []
 for weight in weights:
@@ -165,7 +168,8 @@ plt.scatter(param_lst, l2_norm_lst)
 plt.plot(param_lst, l2_norm_lst)
 plt.xlabel('c')
 plt.ylabel('Average L2 Norm of Feature Weights')
-plt.show()
+plt.savefig('svm_4', format='png')
+plt.clf()
 
 
 # The beginning of SVM with Polynomial kernel
@@ -201,7 +205,8 @@ plt.ylabel('SVM (Polynomial) Accuracy on Training/Test Data')
 plt.scatter(param_lst, test_accuracy_lst)
 plt.plot(param_lst, test_accuracy_lst)
 plt.legend(['Training Accuracy', 'Test Accuracy'], loc='upper right')
-plt.show()
+plt.savefig('svm_5', format='png')
+plt.clf()
 
 l2_norm_lst = []
 for weight in weights:
@@ -211,4 +216,5 @@ plt.scatter(param_lst, l2_norm_lst)
 plt.plot(param_lst, l2_norm_lst)
 plt.xlabel('c')
 plt.ylabel('Average L2 Norm of Feature Weights')
-plt.show()
+plt.savefig('svm_6', format='png')
+plt.clf()

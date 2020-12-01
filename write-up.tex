@@ -114,15 +114,408 @@
 
 	From the graphs of various relationships between the features, it can be concluded that pricing was a significant factor in how the model made the clustering predictions. The general trends found in the graphs also match the expectations from reality, such as the locations of the more expensive listings.
 	
-	\bigskip
+	\pagebreak
 	
 	\textbf{Supervised Analysis}
 	
-	\bigskip
+	The goal of the supervised analysis was to create models that predict the price range of a listing. Eight price ranges were specified, and prices in the dataset were converted to integers from 0 to 7 in accordance with these ranges, for the purpose of training the models. The price ranges are:\\
 	
-	\textbf{Table of Results}
+	\noindent Label 0: \$0-\$199.99\\
+	Label 1: \$200-\$499.99\\
+	Label 2: \$500-\$999.99\\
+	Label 3: \$1000-\$1499.99\\
+	Label 4: \$1500-\$1999.99\\
+	Label 5: \$2000-\$2999.99\\
+	Label 6: \$3000-\$3999.99\\
+	Label 7: \$4000 and above\\
+	
+	
+	\begin{enumerate}
+		\item Logistic Regression\\
+		
+		Logistic regression models were created and trained on the dataset. L1 and L2 regularization, polynomial feature transformation and MinMaxScaler feature transformation were implemented. The outcomes are shown in the graphs below:\\
+		
+		Logistic regression with L1 regularization\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{logistic_regression_graphs/logistic_1.png}
+		\end{center}
+		
+		Variations in feature weights in response to variations in the parameter\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{logistic_regression_graphs/logistic_2.png}
+		\end{center}
+		
+		Logistic regression with L2 regularization\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{logistic_regression_graphs/logistic_3.png}
+		\end{center}
+		
+		Variations in feature weights in response to variations in the parameter\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{logistic_regression_graphs/logistic_4.png}
+		\end{center}
+		
+		Logistic regression with L1 regularization and polynomial feature transformation\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{logistic_regression_graphs/logistic_5.png}
+		\end{center}
+		
+		Variations in feature weights in response to variations in the parameter\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{logistic_regression_graphs/logistic_6.png}
+		\end{center}
+		
+		Logistic regression with L2 regularization and polynomial feature transformation\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{logistic_regression_graphs/logistic_7.png}
+		\end{center}
+		
+		Variations in feature weights in response to variations in the parameter\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{logistic_regression_graphs/logistic_8.png}
+		\end{center}
+		
+		Logistic regression with L1 regularization and MinMaxScaler feature transformation\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{logistic_regression_graphs/logistic_9.png}
+		\end{center}
+		
+		Variations in feature weights in response to variations in the parameter\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{logistic_regression_graphs/logistic_10.png}
+		\end{center}
+		
+		Logistic regression with L2 regularization and MinMaxScaler feature transformation\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{logistic_regression_graphs/logistic_11.png}
+		\end{center}
+		
+		Variations in feature weights in response to variations in the parameter\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{logistic_regression_graphs/logistic_12.png}
+		\end{center}
+		
+		\item Support Vector Machines
+		
+		Support vector machine models were created and trained on the dataset. Linear, polynomial and radial-basis function kernels were implemented. The outcomes are shown in the graphs below:\\
+		
+		\pagebreak
+		
+		SVM with liner kernel\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{svm_graphs/svm_1.png}
+		\end{center}
+		
+		Variations in feature weights in response to variations in the parameter\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{svm_graphs/svm_2.png}
+		\end{center}
+		
+		SVM with radial-basis function kernel\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{svm_graphs/svm_3.png}
+		\end{center}
+		
+		Variations in feature weights in response to variations in the parameter\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{svm_graphs/svm_4.png}
+		\end{center}
+		
+		SVM with polynomial kernel\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{svm_graphs/svm_5.png}
+		\end{center}
+		
+		Variations in feature weights in response to variations in the parameter\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{svm_graphs/svm_6.png}
+		\end{center}
+	
+		\item Neural Networks
+		
+		Neural networks were created and trained on the dataset. L1 and L2 regularization, polynomial feature transformation and MinMaxScaler feature transformation were implemented. The outcomes are shown in the graphs below:\\
+		
+		Neural network without regularization or feature transformation\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{neural_graphs/neural_1.png}
+		\end{center}
+		
+		Variations in feature weights as more iterations are run\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{neural_graphs/neural_2.png}
+		\end{center}
+		
+		Neural network with L1 regularization and polynomial feature transformation\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{neural_graphs/neural_3.png}
+		\end{center}
+		
+		Variations in feature weights in response to variations in the parameter\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{neural_graphs/neural_4.png}
+		\end{center}
+		
+		Neural network with L2 regularization and polynomial feature transformation\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{neural_graphs/neural_5.png}
+		\end{center}
+		
+		Variations in feature weights in response to variations in the parameter\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{neural_graphs/neural_6.png}
+		\end{center}
+		
+		Neural network with L1 regularization and MinMaxScaler feature transformation\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{neural_graphs/neural_7.png}
+		\end{center}
+		
+		Variations in feature weights in response to variations in the parameter\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{neural_graphs/neural_8.png}
+		\end{center}
+		
+		Neural network with L2 regularization and MinMaxScaler feature transformation\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{neural_graphs/neural_9.png}
+		\end{center}
+		
+		Variations in feature weights in response to variations in the parameter\\
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{neural_graphs/neural_10.png}
+		\end{center}
+
+	\end{enumerate}
 	
 	\bigskip
+	\pagebreak
+	
+	\textbf{Tables of Results}
+	
+	\begin{enumerate}
+		\item Logistic Regression
+		\begin{enumerate}
+			\item Model with L1 regularization and polynomial feature transformation
+			
+			\begin{center}
+				\begin{tabular}{|l|l|l|}
+					\hline
+					& Training Accuracy & Test Accuracy \\ \hline
+					c=0.0001 & 0.826525          & 0.825878      \\ \hline
+					c=0.001  & 0.826489          & 0.825878      \\ \hline
+					c=0.01   & 0.826489          & 0.825878      \\ \hline
+					c=0.1    & 0.826489          & 0.825878      \\ \hline
+					c=1      & 0.826489          & 0.825878      \\ \hline
+					c=10     & 0.826489          & 0.825878      \\ \hline
+					c=100    & 0.826525          & 0.825878      \\ \hline
+				\end{tabular}
+			\end{center}
+		
+		\item Model with L2 regularization and polynomial feature transformation
+		
+		\begin{center}
+			\begin{tabular}{|l|l|l|}
+				\hline
+				& Training Accuracy & Test Accuracy \\ \hline
+				c=0.0001 & 0.826525          & 0.825792      \\ \hline
+				c=0.001  & 0.825863          & 0.825277      \\ \hline
+				c=0.01   & 0.826157          & 0.825706      \\ \hline
+				c=0.1    & 0.825789          & 0.825191      \\ \hline
+				c=1      & 0.825826          & 0.825191      \\ \hline
+				c=10     & 0.825716          & 0.825191      \\ \hline
+				c=100    & 0.826341          & 0.825706      \\ \hline
+			\end{tabular}
+		\end{center}
+	
+		\item Model with L1 regularization and MinMaxScaler feature transformation
+		
+		\begin{center}
+			\begin{tabular}{|l|l|l|}
+				\hline
+				& Training Accuracy & Test Accuracy \\ \hline
+				c=0.0001 & 0.826525          & 0.825878      \\ \hline
+				c=0.001  & 0.826489          & 0.825878      \\ \hline
+				c=0.01   & 0.826489          & 0.825878      \\ \hline
+				c=0.1    & 0.826489          & 0.825878      \\ \hline
+				c=1      & 0.826489          & 0.825878      \\ \hline
+				c=10     & 0.826489          & 0.825878      \\ \hline
+				c=100    & 0.826489          & 0.825878      \\ \hline
+			\end{tabular}
+		\end{center}
+	
+		\item Model with L2 regularization and MinMaxScaler feature transformation
+		
+		\begin{center}
+			\begin{tabular}{|l|l|l|}
+				\hline
+				& Training Accuracy & Test Accuracy \\ \hline
+				c=0.0001 & 0.826525          & 0.825792      \\ \hline
+				c=0.001  & 0.825863          & 0.825277      \\ \hline
+				c=0.01   & 0.826157          & 0.825706      \\ \hline
+				c=0.1    & 0.825789          & 0.825191      \\ \hline
+				c=1      & 0.825826          & 0.825191      \\ \hline
+				c=10     & 0.825716          & 0.825191      \\ \hline
+				c=100    & 0.826341          & 0.825706      \\ \hline
+			\end{tabular}
+		\end{center}
+		\end{enumerate}
+	
+	\pagebreak
+	
+	\item Support Vector Machines
+	\begin{enumerate}
+		\item Model with linear kernel
+		\begin{center}
+			\begin{tabular}{|l|l|l|}
+				\hline
+				& Training Accuracy & Test Accuracy \\ \hline
+				c=0.0001 & 0.815951          & 0.811429      \\ \hline
+				c=0.001  & 0.815951          & 0.811429      \\ \hline
+				c=0.01   & 0.815951          & 0.811429      \\ \hline
+				c=0.1    & 0.815951          & 0.811429      \\ \hline
+				c=1      & 0.815951          & 0.811429      \\ \hline
+				c=10     & 0.815951          & 0.811429      \\ \hline
+				c=100    & 0.815951          & 0.811429      \\ \hline
+			\end{tabular}
+		\end{center}
+	
+		\item Model with radial-basis function kernel
+		
+		\begin{center}
+			\begin{tabular}{|l|l|l|}
+				\hline
+				& Training Accuracy & Test Accuracy \\ \hline
+				c=0.0001 & 0.823313          & 0.820000      \\ \hline
+				c=0.001  & 0.823313          & 0.820000      \\ \hline
+				c=0.01   & 0.823313          & 0.820000      \\ \hline
+				c=0.1    & 0.823313          & 0.820000      \\ \hline
+				c=1      & 0.823313          & 0.820000      \\ \hline
+				c=10     & 0.823313          & 0.820000      \\ \hline
+				c=100    & 0.823313          & 0.820000      \\ \hline
+			\end{tabular}
+		\end{center}
+	
+		\item Model with polynomial kernel
+		
+		\begin{center}
+			\begin{tabular}{|l|l|l|}
+				\hline
+				& Training Accuracy & Test Accuracy \\ \hline
+				c=0.0001 & 0.823313          & 0.820000      \\ \hline
+				c=0.001  & 0.823313          & 0.820000      \\ \hline
+				c=0.01   & 0.823313          & 0.820000      \\ \hline
+				c=0.1    & 0.823313          & 0.820000      \\ \hline
+				c=1      & 0.823313          & 0.820000      \\ \hline
+				c=10     & 0.823313          & 0.820000      \\ \hline
+				c=100    & 0.824540          & 0.820000      \\ \hline
+			\end{tabular}
+		\end{center}
+		
+	\end{enumerate}
+
+	\pagebreak
+	
+	\item Neural Networks
+	\begin{enumerate}
+		\item Model with L1 regularization and polynomial feature transformation
+		
+		\begin{center}
+			\begin{tabular}{|l|l|l|}
+				\hline
+				& Training Accuracy & Test Accuracy \\ \hline
+				c=0.0001 & 0.541104          & 0.551428      \\ \hline
+				c=0.001  & 0.503067          & 0.528571      \\ \hline
+				c=0.01   & 0.477300          & 0.491428      \\ \hline
+				c=0.1    & 0.796319          & 0.814285      \\ \hline
+				c=1      & 0.802453          & 0.817142      \\ \hline
+				c=10     & 0.765644          & 0.791428      \\ \hline
+				c=100    & 0.396319          & 0.445714      \\ \hline
+			\end{tabular}
+		\end{center}
+		
+		\item Model with L2 regularization and polynomial feature transformation
+		
+		\begin{center}
+			\begin{tabular}{|l|l|l|}
+				\hline
+				& Training Accuracy & Test Accuracy \\ \hline
+				c=0.0001 & 0.802453           & 0.817142       \\ \hline
+				c=0.001  & 0.801226           & 0.817142       \\ \hline
+				c=0.01   & 0.785276           & 0.800000       \\ \hline
+				c=0.1    & 0.798773           & 0.811428       \\ \hline
+				c=1      & 0.456441           & 0.474285       \\ \hline
+				c=10     & 0.802453           & 0.817142       \\ \hline
+				c=100    & 0.802453           & 0.817142       \\ \hline
+			\end{tabular}
+		\end{center}
+		
+		\item Model with L1 regularization and MinMaxScaler feature transformation
+		
+		\begin{center}
+			\begin{tabular}{|l|l|l|}
+				\hline
+				& Training Accuracy & Test Accuracy \\ \hline
+				c=0.0001 & 0.008588            & 0.005714        \\ \hline
+				c=0.001  & 0.000000            & 0.005714        \\ \hline
+				c=0.01   & 0.496932           & 0.482857       \\ \hline
+				c=0.1    & 0.096932            & 0.140000       \\ \hline
+				c=1      & 0.013496            & 0.008571        \\ \hline
+				c=10     & 0.013496            & 0.005714        \\ \hline
+				c=100    & 0.348466           & 0.317142       \\ \hline
+			\end{tabular}
+		\end{center}
+		
+		\item Model with L2 regularization and MinMaxScaler feature transformation
+		
+		\begin{center}
+			\begin{tabular}{|l|l|l|}
+				\hline
+				& Training Accuracy & Test Accuracy \\ \hline
+				c=0.0001 & 0.495705           & 0.497142       \\ \hline
+				c=0.001  & 0.014723            & 0.005714        \\ \hline
+				c=0.01   & 0.166871           & 0.165714       \\ \hline
+				c=0.1    & 0.004907            & 0.002857        \\ \hline
+				c=1      & 0.004907            & 0.002857        \\ \hline
+				c=10     & 0.000000          & 0.000000      \\ \hline
+				c=100    & 0.001226            & 0.002857        \\ \hline
+			\end{tabular}
+		\end{center}
+	\end{enumerate}
+	\end{enumerate}
+	
+	\pagebreak
 	
 	\textbf{Conclusion}
+	
+	Of all the models trained, the logistic regression model with L1 regularization and polynomial feature transformation yielded the highest test accuracy, 82.588\%. The model was trained multiple times with different parameters, but each parameter yield the same test accuracy. Of all models, the neural networks with MinMaxScaler feature transformation yielded the lowest test accuracy on average. On the other hand, the neural networks with polynomial feature transformation yielded decent test accuracy. It can be concluded that for this dataset, polynomial feature transformation performs better with neural networks than MinMaxScaler feature transformation does.
+	
+	Notably, MinMaxScaler feature transformation yielded decent test accuracy when it was used on the logistic regression models. This demonstrates that the same type of feature transformation can deliver vastly different performance on different types of models.
 \end{document}
