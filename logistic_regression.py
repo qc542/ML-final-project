@@ -33,7 +33,6 @@ features = dataset[['latitude', 'longitude', 'minimum_nights',\
         'number_of_reviews', 'reviews_per_month', \
         'calculated_host_listings_count', 'availability_365', \
         'room_type', 'neighbourhood_group']]
-plt.savefig('logistic_4', format=png)
 target = dataset[['price']]
 
 # Convert prices to integer labels of price ranges
