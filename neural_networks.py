@@ -195,12 +195,12 @@ weights, biases, average_cost_lst = back_propagation(network_structure, \
 plt.plot(average_cost_lst)
 plt.ylabel('Average Cost')
 plt.xlabel('Back Propagation Iteration Number')
-plt.show()
+plt.savefig('neural_1', format='png')
 
 plt.plot(l2_norm_lst)
 plt.ylabel('Average L2 Norm of Feature Weights')
 plt.xlabel('Back Propagation Iteration Number')
-plt.show()
+plt.savefig('neural_2', format='png')
 
 target_predictions = predict_target(weights, biases, features_test, 3)
 print('Prediction accuracy is {}%'.format(accuracy_score(target_test, \
@@ -300,13 +300,13 @@ plt.scatter(lambda_lst, accuracy_lst)
 plt.plot(lambda_lst, accuracy_lst)
 plt.ylabel('Accuracy (L1 Regularization)')
 plt.xlabel('c')
-plt.show()
+plt.savefig('neural_3', format='png')
 
 plt.scatter(lambda_lst, final_l2_norm_lst)
 plt.plot(lambda_lst, final_l2_norm_lst)
 plt.ylabel('Average L2 Norm of Feature Weights')
 plt.xlabel('c')
-plt.show()
+plt.savefig('neural_4', format='png')
 
 # Begin neural network with L2 Regularization
 # Calculates the term to be multiplied by lambda
@@ -388,13 +388,13 @@ plt.scatter(lambda_lst, accuracy_lst)
 plt.plot(lambda_lst, accuracy_lst)
 plt.ylabel('Accuracy (L2 Regularization)')
 plt.xlabel('c')
-plt.show()
+plt.savefig('neural_5', format='png')
 
 plt.scatter(lambda_lst, final_l2_norm_lst)
 plt.plot(lambda_lst, final_l2_norm_lst)
 plt.ylabel('Average L2 Norm of Feature Weights')
 plt.xlabel('c')
-plt.show()
+plt.savefig('neural_6', format='png')
 
 
 # Begin neural network with transformation by MinMaxScaler
@@ -428,13 +428,13 @@ plt.scatter(lambda_lst, accuracy_lst)
 plt.plot(lambda_lst, accuracy_lst)
 plt.ylabel('Accuracy (L1 Regularization)')
 plt.xlabel('c')
-plt.show()
+plt.savefig('neural_7', format='png')
 
 plt.scatter(lambda_lst, final_l2_norm_lst)
 plt.plot(lambda_lst, final_l2_norm_lst)
 plt.ylabel('Average L2 Norm of Feature Weights')
 plt.xlabel('c')
-plt.show()
+plt.savefig('neural_8', format='png')
 
 
 lambda_lst = [0.0001, 0.001, 0.01, 0.1, 1, 10, 100]
@@ -460,10 +460,10 @@ plt.scatter(lambda_lst, accuracy_lst)
 plt.plot(lambda_lst, accuracy_lst)
 plt.ylabel('Accuracy (L2 Regularization)')
 plt.xlabel('c')
-plt.show()
+plt.savefig('neural_9', format='png')
 
 plt.scatter(lambda_lst, final_l2_norm_lst)
 plt.plot(lambda_lst, final_l2_norm_lst)
 plt.ylabel('Average L2 Norm of Feature Weights')
 plt.xlabel('c')
-plt.show()
+plt.savefig('neural_10', format='png')
